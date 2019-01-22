@@ -1,1 +1,3 @@
-# OPC-CLIENT-DotNet-Explorer
+# OPC UA console client
+
+#reference : https://github.com/OPCFoundation/UA-.NETStandard
