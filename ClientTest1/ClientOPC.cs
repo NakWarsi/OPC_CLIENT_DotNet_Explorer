@@ -32,6 +32,7 @@ namespace ClientTest1
             application.ApplicationType = ApplicationType.Client;
             application.ConfigSectionName = "ClientTest1Configuration";
             ApplicationConfiguration config = application.LoadApplicationConfiguration(false).Result;
+
             Console.WriteLine("configuration loaded");
 
             //step 2: creating session with the OPC server
@@ -190,7 +191,7 @@ namespace ClientTest1
                     {
                     DisplayName = "en",
                     StartNodeId = "ns=2;s=Scalar_Simulation_DateTime"
-                }
+                    }
                 };
 
                 Console.WriteLine("Moniterd Items are added to the list");
