@@ -129,11 +129,9 @@ namespace ClientTest1
                     out cp,
                     out refs);
 
-
                 ////testing read of Scalar value
                 var node = session.ReadValue(new NodeId("ns=2;s=Scalar_Static_DateTime")).ToString();
                 Console.WriteLine(".........................."+node+"...................................");
-
 
                 Console.WriteLine("DisplayName: BrowseName, NodeClass");
                 foreach (var rd in refs)
@@ -181,15 +179,11 @@ namespace ClientTest1
                     }
                 }
 
-
-
-
                 //step 4: create a subscription at an specific interval
                 var subscription = new Subscription(session.DefaultSubscription)
                 {
                     PublishingInterval = 3000
                 };
-                //Console.WriteLine("subscription created");
 
                 //adding items to moniter into the subscription
                 var list = new List<MonitoredItem> {
@@ -207,10 +201,6 @@ namespace ClientTest1
 
                 Console.WriteLine("Moniterd Items are added to the list");
 
-                //foreach (var item in list)
-                //{
-                //    item.Notification += OnNotification;
-                //}
 
                 list.ForEach(i => i.Notification += OnNotification);
                 subscription.AddItems(list);
@@ -219,20 +209,16 @@ namespace ClientTest1
                 session.AddSubscription(subscription);
                 subscription.Create();
                 Console.WriteLine(subscription.NotificationCount);
-
             }
         }
+
         private static void OnNotification(MonitoredItem item, MonitoredItemNotificationEventArgs e)
         {
             Console.WriteLine("data recieved");
             foreach (var value in item.DequeueValues())
             {
-                Console.WriteLine("data recieved");
                 Console.WriteLine("{0}: {1}, {2}, {3}, {4}", item.DisplayName, value.Value, value.SourceTimestamp, value.StatusCode,value.StatusCode);
             }
         }
-
     }
-
-
 }
