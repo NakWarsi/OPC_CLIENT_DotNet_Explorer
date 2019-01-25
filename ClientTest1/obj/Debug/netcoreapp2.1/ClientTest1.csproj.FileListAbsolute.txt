@@ -8,4 +8,4 @@ C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\obj\Debug\netcorea
 C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\obj\Debug\netcoreapp2.1\ClientTest1.AssemblyInfo.cs
 C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\obj\Debug\netcoreapp2.1\ClientTest1.dll
 C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\obj\Debug\netcoreapp2.1\ClientTest1.pdb
-C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\obj\Debug\netcoreapp2.1\ClientTest1.csprojAssemblyReference.cache
+C:\Users\Wars_Nau\source\repos\OPC_UA\ClientTest1\ClientTest1\bin\Debug\netcoreapp2.1\ClientTest1COnfiguration.Config.xml

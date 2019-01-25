@@ -11,4 +11,10 @@
     <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua" Version="1.4.354.23" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ClientTest1COnfiguration.Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
