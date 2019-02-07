@@ -21,7 +21,7 @@
     <!-- Where the trust list is stored (UA Applications) -->
     <TrustedPeerCertificates>
       <StoreType>Directory</StoreType>
-      <StorePath>OPC Foundation\CertificateStores\UA Applications</StorePath>
+      <StorePath>OPC Foundation\CertificateStores\Trusted</StorePath>
     </TrustedPeerCertificates>
 
     <!-- Where the issuer certificate are stored (certificate authorities) -->
