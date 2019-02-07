@@ -22,6 +22,24 @@ namespace ClientTest1
 
         // returning Status of the Client 
         public static ExitCode ExitCode { get => exitCode; }
+        
+        //overriding cerificate validator
+        private static void CertificateValidator_CertificateValidation(CertificateValidator validator, CertificateValidationEventArgs e)
+        {
+            if (e.Error.StatusCode == StatusCodes.BadCertificateUntrusted)
+            {
+                e.Accept = autoAccept;
+                if (autoAccept)
+                {
+                    Console.WriteLine("Accepted Certificate: {0}", e.Certificate.Subject);
+                }
+                else
+                {
+                    Console.WriteLine("Rejected Certificate: {0}", e.Certificate.Subject);
+                }
+            }
+        }
+
 
         // running the Client
         internal void Run()
@@ -35,7 +53,22 @@ namespace ClientTest1
 
             Console.WriteLine("configuration loaded");
 
-            //step 2: creating session with the OPC server
+             // check the application certificate.
+            bool certOk = application.CheckApplicationInstanceCertificate(false, 0).Result;
+            if (!certOk)
+            {
+                Console.WriteLine("Application instance certificate invalid!");
+
+                throw new Exception("Application instance certificate invalid!");
+            }
+
+            //checking forthe AutoAcceptence of untrusted file 
+            if (!config.SecurityConfiguration.AutoAcceptUntrustedCertificates)
+            {
+                config.CertificateValidator.CertificateValidation += new CertificateValidationEventHandler(CertificateValidator_CertificateValidation);
+            }
+
+            //step 2: creating session with the OPC server 
             var session = Session.Create(config,
                     new ConfiguredEndpoint(null, new EndpointDescription("opc.tcp://" + Dns.GetHostName() + ":62546/ServerTest2")),
                     true,
